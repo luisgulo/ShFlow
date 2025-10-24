@@ -1,0 +1,10 @@
+- name: Asignar usuarios a grupos
+  module: loop
+  args:
+    items: alice:sudo,bob:docker,carol:admin
+    module: useradd
+    args:
+      name: {{item_key}}
+      groups: {{item_value}}
+      shell: /bin/bash
+      become: true

@@ -1,0 +1,9 @@
+tasks:
+  - name: Descargar binario de servicio
+    module: download
+    args:
+      url: https://example.com/binario.tar.gz
+      dest: /tmp/manual.pdf
+      proxy: http://proxy.local:3128
+      continue: true
+      become: true

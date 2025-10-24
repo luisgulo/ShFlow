@@ -1,0 +1,8 @@
+tasks:
+  - name: Descomprimir ZIP
+    module: archive
+    args:
+      action: decompress
+      format: zip
+      archive: /tmp/project.zip
+      dest: /tmp/destino/project

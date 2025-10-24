@@ -1,0 +1,5 @@
+- name: Vaciar log
+  module: fs
+  args:
+    action: truncate
+    path: /var/log/app.log

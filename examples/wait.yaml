@@ -1,0 +1,5 @@
+tasks:
+  - name: Pausa breve
+    module: wait
+    args:
+      seconds: 1.5

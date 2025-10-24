@@ -1,0 +1,6 @@
+- name: Mover logs antiguos
+  module: fs
+  args:
+    action: move
+    files: /var/log/app1.log,/var/log/app2.log
+    dest: /tmp/logs

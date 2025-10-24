@@ -1,0 +1,9 @@
+- name: Crear usuarios
+  module: loop
+  args:
+    items: alice,bob,carol
+    module: useradd
+    args:
+      name: {{item}}
+      shell: /bin/bash
+      become: true

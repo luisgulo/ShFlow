@@ -1,0 +1,6 @@
+missing_args=❌ [winremote_exec] Missing parameters. host, winuser, winpassword and command are required.
+start=🔧 [winremote_exec] Executing remote command on {host}:{port} as {user}...
+success=✅ [winremote_exec] Command executed successfully.
+fail=❌ [winremote_exec] Error executing command (code {code}).
+missing_deps=❌ [winremote_exec] sshpass or ssh are not available.
+deps_ok=✅ [winremote_exec] sshpass and ssh are available.

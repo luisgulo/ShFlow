@@ -1,0 +1,2 @@
+missing=❌ [vault] Secret '{key}' not found in {dir}
+decrypt_fail=❌ [vault] Failed to decrypt '{key}'

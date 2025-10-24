@@ -1,0 +1,5 @@
+missing_template=❌ [template] Template not found: {path}
+missing_vars=❌ [template] Undefined variables:
+generated=✅ [template] File generated: {dest}
+missing_deps=❌ [template] Missing dependencies: {cmds}
+deps_ok=✅ [template] All dependencies are available

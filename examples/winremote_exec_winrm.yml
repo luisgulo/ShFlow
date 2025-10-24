@@ -1,0 +1,9 @@
+tasks:
+
+  - name: Ejecutar comando remoto en Windows vía WinRM (WS-Manager)
+    module: winremote_exec_winrm
+    args:
+      winuser: guillermo
+      winpassword: puertas
+      command: "cmd.exe /c echo hola > C:\\salida.txt"
+

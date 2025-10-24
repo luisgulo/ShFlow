@@ -1,0 +1,8 @@
+- name: Crear usuario técnico
+  module: useradd
+  args:
+    name: devops
+    shell: /bin/bash
+    home: /srv/devops
+    groups: sudo,docker
+    become: true

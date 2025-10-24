@@ -1,0 +1,8 @@
+creating_dir=📁 [file] Creating directory: {path}
+creating_file=📄 [file] Creating file: {path}
+setting_mode=🔐 [file] Setting permissions {mode} on {path}
+removing_dir=🧹 [file] Removing directory: {path}
+removing_file=🧹 [file] Removing file: {path}
+unsupported_state=❌ [file] Unsupported state '{state}'. Use present or absent.
+missing_deps=❌ [file] ssh is not available.
+deps_ok=✅ [file] ssh is available.

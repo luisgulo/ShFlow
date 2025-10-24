@@ -1,0 +1,5 @@
+start=📡 [ping] Testing connectivity from {host} to {target}...
+success=✅ [ping] {host} can reach {target}
+fail=❌ [ping] {host} cannot reach {target}
+missing_deps=❌ [ping] ssh or ping are not available.
+deps_ok=✅ [ping] ssh and ping are available.

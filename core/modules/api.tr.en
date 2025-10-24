@@ -1,0 +1,8 @@
+start=🌐 [api] Executing {method} → {url}
+debug_cmd=🔍 Actual command: {cmd}
+debug_body=📦 [api] Body sent:\n{body}
+saved=💾 [api] Response saved to: {output}
+json_fail=⚠️ [api] Failed to parse as JSON
+xml_fail=⚠️ [api] Failed to parse as XML
+missing_cmd=⚠️ [api] '{cmd}' not available locally. Assuming it exists on the remote host.
+cmd_ok=✅ [api] '{cmd}' available locally.

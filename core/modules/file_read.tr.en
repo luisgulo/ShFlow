@@ -1,0 +1,4 @@
+missing_path=❌ [file_read] Parameter 'path' is required
+start=📄 [file_read] Reading file '{path}' on {host}...
+missing_deps=❌ [file_read] ssh or grep are not available.
+deps_ok=✅ [file_read] ssh and grep are available.

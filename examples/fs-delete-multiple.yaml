@@ -1,0 +1,5 @@
+- name: Eliminar temporales
+  module: fs
+  args:
+    action: delete
+    files: /tmp/debug.log,/tmp/test.out

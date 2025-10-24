@@ -1,0 +1,5 @@
+missing_file=❌ [replace] File not found: {path}
+backup_created=📦 Backup created: {path}.bak
+replaced=✅ [replace] Replacement applied to: {path}
+missing_deps=❌ [replace] Missing dependencies: {cmds}
+deps_ok=✅ [replace] All dependencies are available

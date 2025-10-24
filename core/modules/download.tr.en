@@ -1,0 +1,7 @@
+missing_url=❌ [download] Missing required parameter 'url'
+using_wget=📦 [download] Using wget
+using_curl=📦 [download] Using curl
+missing_tool=❌ [download] Neither wget nor curl are available
+start=🔧 [download] Downloading '{url}' → '{dest}'
+done=✅ [download] Download completed: {dest}
+deps_ok=✅ [download] Download tool available

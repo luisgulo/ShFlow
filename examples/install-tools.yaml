@@ -1,0 +1,14 @@
+tasks:
+  - name: Instalar curl
+    module: package
+    args:
+      name: curl
+      state: present
+      become: true
+
+  - name: Instalar vim
+    module: package
+    args:
+      name: vim
+      state: present
+      become: true

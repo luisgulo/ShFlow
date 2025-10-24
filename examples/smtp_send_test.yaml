@@ -1,0 +1,12 @@
+tasks:
+  - name: Enviar correo de prueba
+    module: smtp_send
+    args:
+      smtp_server: smtp.example.com
+      smtp_port: 587
+      smtp_user: usuario@example.com
+      smtp_pass: ClaveSuperSecreta123
+      from: usuario@example.com
+      to: destino@correo.com
+      subject: Prueba desde ShFlow
+      body: Este es un correo de prueba enviado desde el módulo smtp_send.

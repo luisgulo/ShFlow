@@ -1,0 +1,9 @@
+title=📚 ShFlow Modules Documentation
+separator_line==================================
+section=🗃️  Module Type: {type}
+module=  📦 Module: {name}
+desc=  🔧 Description: {desc}
+author=  👤 Author: {author}
+version=  📌 Version: {version}
+deps=  📎 Dependencies: {deps}
+separator=  ————————————————————————

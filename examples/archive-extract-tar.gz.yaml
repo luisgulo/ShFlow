@@ -1,0 +1,9 @@
+tasks:
+  - name: Extraer backup
+    module: archive
+    args:
+      action: extract
+      format: tar
+      archive: /tmp/logs.tar.gz
+      dest: /tmp/restore
+      become: true

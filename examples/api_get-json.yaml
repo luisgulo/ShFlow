@@ -1,0 +1,7 @@
+tasks:
+  - name: Obtener producto fake
+    module: api
+    args:
+      method: get
+      url: https://fakestoreapi.com/products/1
+      parse: json

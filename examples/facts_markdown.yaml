@@ -1,0 +1,8 @@
+tasks:
+  - name: Inventario de servidores
+    module: facts
+    args:
+      format: md
+      output: /tmp/informe.md
+      append: true
+      host_label: servidor-01

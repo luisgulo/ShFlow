@@ -1,0 +1,24 @@
+tasks:
+  - name: Crear directorio web
+    module: file
+    args:
+      path: "/var/www/html"
+      state: present
+      type: directory
+      mode: "0755"
+      become: true
+
+  - name: Ejecutar contenedor nginx
+    module: docker
+    args:
+      action: present
+      name: nginx_web
+      image: nginx:latest
+      become: true
+
+  - name: Habilitar servicio docker
+    module: service
+    args:
+      name: docker
+      state: enable
+      become: true

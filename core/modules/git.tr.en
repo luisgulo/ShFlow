@@ -1,0 +1,7 @@
+cloning=📥 [git] Cloning repository '{repo}' into '{dest}'
+pulling=🔄 [git] Running git pull in '{dest}'
+checkout=📦 [git] Switching to branch '{branch}' in '{dest}'
+fetching=📄 [git] Fetching file '{file}' from '{repo}' branch '{branch}'
+unsupported=❌ [git] Unsupported action '{action}'
+missing_deps=❌ [git] Missing dependencies: {cmds}
+deps_ok=✅ [git] All dependencies are available

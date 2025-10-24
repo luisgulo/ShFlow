@@ -1,0 +1,8 @@
+tasks:
+  - name: Probar imagen hello-world
+    module: docker
+    args:
+      action: present
+      name: test-hello
+      image: hello-world
+      detach: false

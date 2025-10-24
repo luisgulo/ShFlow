@@ -1,0 +1,17 @@
+hosts: servidor_pruebas
+tasks:
+  - name: Verificar vulnerabilidad openssl EUVD
+    module: euvd_check
+    args:
+      state: check
+      enisa_id: EUVD-2025-31120
+      package: openssl
+      become: true
+
+  - name: Verificar vulnerabilidad sudo EUVD
+    module: euvd_check
+    args:
+      state: check
+      enisa_id: EUVD-2025-19673
+      package: sudo
+      become: true      

@@ -1,0 +1,8 @@
+tasks:
+  - name: Verificar acceso a gateway desde web01
+    module: ping
+    args:
+      target: 192.168.1.12
+      count: 4
+      timeout: 5
+      become: true

@@ -1,0 +1,10 @@
+title=# 🧩 Módulos en ShFlow
+generated=Generado automáticamente el {date}
+col_module=Módulo
+col_desc=Descripción
+col_type=Tipo
+col_author=Autor
+col_version=Versión
+col_deps=Dependencias
+footer=_Para actualizar esta tabla, ejecuta: `module-docgen`_
+done=✅ Documentación generada en {path}

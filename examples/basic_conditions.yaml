@@ -1,0 +1,15 @@
+hosts: localhost
+parallelism: false
+
+tasks:
+  - name: Pausa si el host es localhost
+    module: wait
+    args:
+      seconds: 1
+    condition: '[ "{{ name }}" = "localhost" ]'
+
+  - name: Pausa solo si existe el archivo /tmp/flag.txt
+    module: wait
+    args:
+      seconds: 2
+    condition: 'test -f /tmp/flag.txt'

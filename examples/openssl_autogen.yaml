@@ -1,0 +1,46 @@
+hosts: localhost
+parallelism: false
+
+tasks:
+  - name: Generar certificado autofirmado en /tmp
+    module: run
+    args:
+      command: |
+        openssl req -x509 -newkey rsa:2048 -keyout /tmp/test.key -out /tmp/test.crt \
+          -days 365 -nodes -subj "/CN=example.com" && \
+        openssl pkcs12 -export -out /tmp/certificado.pfx \
+          -inkey /tmp/test.key -in /tmp/test.crt \
+          -name "Certificado de Prueba" -password pass:secreta
+      become: false
+
+  - name: Convertir PFX a PEM
+    module: openssl
+    args:
+      state: convert
+      src: /tmp/certificado.pfx
+      dest: /tmp/certificado.pem
+      format: pem
+      password: "secreta"
+
+  - name: Inspeccionar certificado convertido
+    module: openssl
+    args:
+      state: inspect
+      src: /tmp/certificado.pem
+
+  - name: Instalar certificado como CA confiable
+    module: openssl
+    args:
+      state: trust
+      src: /tmp/certificado.pem
+      alias: mi_certificado
+      trust_path: /usr/local/share/ca-certificates/
+      become: true
+
+  - name: Eliminar certificado como CA
+    module: openssl
+    args:
+      state: untrust
+      alias: mi_certificado
+      trust_path: /usr/local/share/ca-certificates/
+      become: true

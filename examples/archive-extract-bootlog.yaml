@@ -1,0 +1,11 @@
+tasks:
+  - name: Extraer solo boot.log desde logs.tar.gz
+    module: archive
+    args:
+      action: extract
+      format: tar
+      archive: /tmp/logs.tar.gz
+      dest: /tmp/extraccion/
+      files: var/log/boot.log
+      become: true
+

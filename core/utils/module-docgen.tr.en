@@ -1,0 +1,10 @@
+title=# 🧩 Modules in ShFlow
+generated=Automatically generated on {date}
+col_module=Module
+col_desc=Description
+col_type=Type
+col_author=Author
+col_version=Version
+col_deps=Dependencies
+footer=_To update this table, run: `module-docgen`_
+done=✅ Documentation generated at {path}

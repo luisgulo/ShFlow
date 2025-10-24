@@ -1,0 +1,7 @@
+tasks:
+  - name: Acceder a API con token seguro
+    module: run
+    args:
+      command: "curl -H \"Authorization: Bearer \$TOKEN\" https://api.example.com/status"
+      vault_key: "api_token"
+      become: false

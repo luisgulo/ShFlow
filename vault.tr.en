@@ -1,0 +1,13 @@
+encrypt_asym=🔐 Using asymmetric encryption for '{key}'
+encrypt_sym=🔐 Using symmetric encryption for '{key}'
+missing_key=❌ No key found for encryption. Run vault-init.sh first.
+secret_saved=✅ Secret '{key}' saved in {dir}
+secret_removed=🗑️ Secret '{key}' removed.
+edit_prompt=🔑 New value for '{key}':
+cli_prompt=🔑 Value for '{key}':
+exists=✅ Exists
+not_exists=❌ Does not exist
+usage=Usage: vault.sh {add|get|show|edit|remove|list|export|exists} <key>
+action_invalid=❌ [vault] Action '{action}' not supported.
+missing_dep=❌ [vault] gpg is not available.
+dep_ok=✅ [vault] gpg is available.

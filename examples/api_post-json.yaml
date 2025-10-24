@@ -1,0 +1,8 @@
+- name: Crear usuario
+  module: api
+  args:
+    method: post
+    url: https://api.example.com/users
+    headers: Content-Type:application/json
+    body: '{"name":"Luis","role":"admin"}'
+    parse: json

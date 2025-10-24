@@ -1,0 +1,9 @@
+- name: Asignar permisos cruzados
+  module: loop
+  args:
+    items: alice,bob
+    secondary: read,write
+    module: permission
+    args:
+      user: {{item}}
+      mode: {{secondary_item}}

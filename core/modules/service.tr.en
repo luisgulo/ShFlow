@@ -1,0 +1,6 @@
+executing=🔧 [service] Executing '{state}' on service '{name}' at {host}
+unsupported=❌ [service] State '{state}' not supported. Use start, stop, restart, enable or disable.
+missing_ssh=❌ [service] ssh is not available.
+ssh_ok=✅ [service] ssh is available.
+missing_systemctl=⚠️ [service] systemctl is not available locally. Assuming it exists on the remote host.
+systemctl_ok=✅ [service] systemctl is available locally.

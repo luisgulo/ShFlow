@@ -1,0 +1,11 @@
+tasks:
+  - name: Crear usuario de prueba
+    module: api
+    args:
+      method: post
+      url: https://reqres.in/api/users
+      body: |
+        {"name":"Luis","job":"ShFlow tester"}
+      headers: x-api-key:reqres-free-v1,Content-Type:application/json
+      parse: json
+

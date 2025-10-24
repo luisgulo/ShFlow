@@ -1,0 +1,5 @@
+invalid=❌ [wait] The 'seconds' parameter must be a valid number (integer or decimal)
+start=⏳ [wait] Waiting for {seconds} seconds...
+done=✅ [wait] Pause completed
+missing_deps=❌ [wait] The 'sleep' command is not available
+deps_ok=✅ [wait] Dependencies OK

@@ -1,0 +1,11 @@
+# Playbook: winremote_check_test.yml
+# Descripción: Verifica acceso remoto a un equipo Windows mediante SSH y ejecución de PowerShell
+# Autor: Luis GuLo
+
+tasks:
+  - name: Verificar acceso remoto a Windows
+    module: winremote_check
+    args:
+      winuser: guillermo
+      winpassword: "{{ vault('winpass') }}"
+      port: 2222

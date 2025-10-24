@@ -1,0 +1,32 @@
+hosts: localhost
+parallelism: false
+tasks:
+  - name: Crear usuario de servicio
+    module: users
+    args:
+      state: create
+      username: servicio
+      home: /home/servicio
+      groups: docker
+      shell: /usr/sbin/nologin
+      become: true
+
+  - name: Modificar shell de servicio
+    module: users
+    args:
+      state: modify
+      username: servicio
+      home: /home/servicio
+      groups: docker
+      shell: /bin/bash
+      become: true
+
+  - name: Eliminar usuario de servicio
+    module: users
+    args:
+      state: absent
+      username: servicio
+      home: /home/servicio
+      groups: docker
+      shell: /bin/bash
+      become: true

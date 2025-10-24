@@ -1,0 +1,8 @@
+missing_local=❌ [vault-remote] Secret '{key}' does not exist locally.
+missing_remote=❌ [vault-remote] Secret '{key}' does not exist on remote host.
+pushed=📤 Secret '{key}' sent to {host}:{path}
+pulled=📥 Secret '{key}' retrieved from {host}
+synced=🔄 Vault synchronized with {host}:{path}
+unsupported=❌ [vault-remote] Action '{action}' not supported.
+missing_deps=❌ [vault-remote] Command '{cmd}' not available.
+deps_ok=✅ [vault-remote] Dependencies available.

@@ -1,0 +1,6 @@
+tasks:
+  - name: IPs del host
+    module: facts
+    args:
+      field: ip_addresses
+      format: kv

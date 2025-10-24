@@ -1,0 +1,10 @@
+run=🧪 [docker] Running container '{name}' with image '{image}'
+stop=🛑 [docker] Stopping container '{name}'
+remove=🧹 [docker] Removing container '{name}'
+build=🏗️ [docker] Building image '{image}' from '{path}'
+exec=🚀 [docker] Executing command in '{name}': {command}
+unsupported=❌ [docker] Unsupported action '{action}'
+missing_ssh=❌ [docker] ssh is not available.
+ssh_ok=✅ [docker] ssh is available.
+missing_docker=⚠️ [docker] docker not available locally. Assuming it exists on the remote host.
+docker_ok=✅ [docker] docker available locally.

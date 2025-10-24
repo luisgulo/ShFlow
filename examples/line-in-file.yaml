@@ -1,0 +1,8 @@
+- name: Asegurar configuración de NGINX
+  module: lineinfile
+  args:
+    path: /etc/nginx/nginx.conf
+    line: 'client_max_body_size 20M;'
+    regexp: '^client_max_body_size'
+    backup: true
+    become: true

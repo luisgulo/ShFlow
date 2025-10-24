@@ -1,0 +1,10 @@
+start=🔍 [winremote_detect] Checking connectivity with {host}...
+ssh_on=✅ SSH enabled (port {port})
+ssh_off=❌ SSH not available
+winrm_on=✅ WinRM enabled (port {port})
+winrm_off=❌ WinRM not available
+both=🟢 Both protocols available on {host}
+one=🟡 One protocol is available
+none=🔴 No remote protocol detected on {host}
+missing_deps=❌ [winremote_detect] nc or curl are not available.
+deps_ok=✅ [winremote_detect] nc and curl are available.

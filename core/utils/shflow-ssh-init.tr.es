@@ -1,0 +1,12 @@
+start=🔐 Inicializando acceso SSH sin contraseña para usuario: {user}
+inventory=📁 Inventario: {path}
+key=🔑 Clave pública: {key}
+missing_dep=❌ Requiere '{cmd}' instalado en el sistema
+no_hosts=❌ No se encontraron hosts en el inventario.
+missing_ip=⚠️ Host '{host}' sin ansible_host definido
+checking=🖥️ Host: {host} ({ip})
+skip=   🔁 Inicialización SSH no es necesaria
+copying=   🚀 Ejecutando ssh-copy-id para {user}@{ip}
+success=   ✅ Clave pública instalada correctamente
+fail=   ❌ Fallo al instalar clave pública
+done=✅ Proceso de inicialización SSH completado

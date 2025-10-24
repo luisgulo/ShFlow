@@ -1,0 +1,6 @@
+missing_args=❌ [winremote_check] Missing parameters. host, winuser and winpassword are required.
+start=🖥️ [winremote_check] Checking remote access to {host}...
+success=✅ [winremote_check] Remote connection and execution OK on {host}
+fail=❌ [winremote_check] Connection or execution failed on {host}
+missing_ssh=❌ [winremote_check] ssh is not available.
+ssh_ok=✅ [winremote_check] ssh is available.

@@ -1,0 +1,6 @@
+tasks:
+  - name: Crear grupo de servicio
+    module: groups
+    args:
+      groupname: servicio
+      become: true

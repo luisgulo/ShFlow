@@ -1,0 +1,31 @@
+tasks:
+  - name: Lanzar contenedor LDAP
+    module: docker
+    args:
+      action: present
+      name: test-ldap
+      image: osixia/openldap:latest
+      run_args: "-p 389:389 -p 636:636 -e LDAP_ORGANISATION='Test Org' -e LDAP_DOMAIN='test.local' -e LDAP_ADMIN_PASSWORD='secreta'"
+
+  - name: Esperar 5 segundos para que LDAP esté listo
+    module: wait
+    args:
+      seconds: 5
+
+  - name: Buscar usuarios en OpenLDAP
+    module: ldap_openldap
+    args:
+      state: search
+      server: ldap://localhost
+      port: 389
+      base_dn: "dc=test,dc=local"
+      filter: "(objectClass=*)"
+      attributes: "cn,mail,uid"
+      bind_dn: "cn=admin,dc=test,dc=local"
+      password: "secreta"
+
+  #- name: Eliminar LDAP
+  #  module: docker
+  #  args:
+  #    action: absent
+  #    name: test-ldap

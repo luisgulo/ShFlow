@@ -1,0 +1,23 @@
+tasks:
+  - name: Enviar secreto 'api_token' al host remoto
+    module: vault-remote
+    args:
+      action: push
+      key: api_token
+      remote_path: "/etc/shflow/vault"
+      become: true
+
+  - name: Recuperar secreto 'db_password' desde el host remoto
+    module: vault-remote
+    args:
+      action: pull
+      key: db_password
+      remote_path: "/etc/shflow/vault"
+      become: true
+
+  - name: Sincronizar todos los secretos locales al host remoto
+    module: vault-remote
+    args:
+      action: sync
+      remote_path: "/etc/shflow/vault"
+      become: true

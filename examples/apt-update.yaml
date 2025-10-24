@@ -1,0 +1,13 @@
+tasks:
+  - name: Actualizar datos del Repo
+    module: run
+    args:
+      command: "apt-get -y update"
+      become: true
+
+  - name: Actualizar SO
+    module: run
+    args:
+      command: "apt-get -y upgrade"
+      become: true
+

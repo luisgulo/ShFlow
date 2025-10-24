@@ -1,0 +1,15 @@
+priv_required=❌ [users] Privileges required to manage users. Use 'become: true'.
+missing_username=❌ [users] Missing required parameter 'username'
+enter_create=🔧 [users] Entering create
+enter_modify=🔧 [users] Entering modify
+enter_absent=🔧 [users] Entering absent
+exists=✅ [users] User '{username}' already exists
+not_exists=⚠️ [users] User '{username}' does not exist
+group_create=🔧 [users] Creating group '{groups}'
+created=✅ [users] User '{username}' created
+modified=✅ [users] User '{username}' modified
+deleted=✅ [users] User '{username}' deleted
+already_deleted=✅ [users] User '{username}' already deleted
+unsupported_state=❌ [users] State '{state}' not supported. Use create, modify or absent.
+missing_deps=❌ [users] Missing dependencies: {cmds}
+deps_ok=✅ [users] All dependencies are present

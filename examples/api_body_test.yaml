@@ -1,0 +1,62 @@
+tasks:
+  - name: POST simple con campos planos
+    module: api
+    args:
+      method: post
+      url: https://reqres.in/api/users
+      body: |
+        {"name":"Luis","job":"ShFlow tester"}
+      headers: x-api-key:reqres-free-v1,Content-Type:application/json
+      parse: json
+
+  - name: POST con estructura anidada
+    module: api
+    args:
+      method: post
+      url: https://httpbin.org/post
+      body: |
+        {
+          "title": "Test",
+          "tags": ["bash", "api", "flow"],
+          "meta": {
+            "author": "Luis",
+            "version": "1.0"
+          }
+        }
+      headers: Content-Type:application/json
+      parse: json
+
+  - name: POST con cuerpo vacío
+    module: api
+    args:
+      method: post
+      url: https://httpbin.org/post
+      body: ""
+      headers: Content-Type:application/json
+      parse: json
+
+  - name: POST con caracteres especiales
+    module: api
+    args:
+      method: post
+      url: https://httpbin.org/post
+      body: |
+        {"mensaje":"¡Hola desde ShFlow! 🎉 Ñandú con tilde y ñ"}
+      headers: Content-Type:application/json
+      parse: json
+
+  - name: POST con array de objetos
+    module: api
+    args:
+      method: post
+      url: https://httpbin.org/post
+      body: |
+        {
+          "usuarios": [
+            {"nombre": "Luis", "rol": "admin"},
+            {"nombre": "Ana", "rol": "tester"}
+          ]
+        }
+      headers: Content-Type:application/json
+      parse: json
+

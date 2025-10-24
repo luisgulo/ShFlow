@@ -1,0 +1,15 @@
+priv_required=❌ [groups] Privileges required to manage groups. Use 'become: true'.
+missing_groupname=❌ [groups] Missing required parameter 'groupname'
+enter_create=🔧 [groups] Entering create
+enter_modify=🔧 [groups] Entering modify
+enter_absent=🔧 [groups] Entering absent
+exists=✅ [groups] Group '{groupname}' already exists
+not_exists=⚠️ [groups] Group '{groupname}' does not exist
+nothing_to_modify=⚠️ [groups] Nothing to modify: missing 'gid'
+created=✅ [groups] Group '{groupname}' created
+modified=✅ [groups] Group '{groupname}' modified
+deleted=✅ [groups] Group '{groupname}' deleted
+already_deleted=✅ [groups] Group '{groupname}' already deleted
+unsupported_state=❌ [groups] Unsupported state '{state}'. Use create, modify or absent.
+missing_deps=❌ [groups] Missing dependencies: {cmds}
+deps_ok=✅ [groups] All dependencies are present

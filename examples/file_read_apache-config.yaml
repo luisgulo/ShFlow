@@ -1,0 +1,10 @@
+hosts: localhost
+parallelism: false
+
+tasks:
+  - name: Leer configuración de Apache sin comentarios
+    module: file_read
+    args:
+      path: "/etc/apache2/apache2.conf"
+      grep: "^[^#]"
+      become: true

@@ -1,0 +1,8 @@
+- name: Reemplazar puerto en archivo de configuración
+  module: replace
+  args:
+    path: /etc/nginx/sites-available/default
+    regexp: 'listen\s+80'
+    replace: 'listen 8080'
+    backup: true
+    become: true

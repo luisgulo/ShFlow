@@ -1,0 +1,12 @@
+hosts: localhost
+parallelism: false
+tasks:
+  - name: Eliminar usuario de servicio
+    module: users
+    args:
+      state: absent
+      username: servicio
+      home: /home/servicio
+      groups: docker
+      shell: /bin/bash
+      become: true

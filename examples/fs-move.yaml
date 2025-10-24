@@ -1,0 +1,6 @@
+- name: Mover log
+  module: fs
+  args:
+    action: move
+    src: /var/log/app.log
+    dest: /tmp/app.log

@@ -1,0 +1,9 @@
+# groups.yaml — Definición de grupos en ShFlow
+# Este archivo permite describir grupos, asignar etiquetas y metadatos.
+# Sintaxis:
+# groups:
+#   nombre_grupo:
+#     description: <texto descriptivo>
+#     tags: [tag1, tag2, ...]
+
+groups: {}

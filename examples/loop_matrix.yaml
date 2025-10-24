@@ -1,0 +1,14 @@
+hosts: localhost
+parallelism: false
+
+tasks:
+  - name: Probar conectividad entre múltiples orígenes y destinos
+    module: loop
+    args:
+      items: "equipo1:192.168.1.1,equipo2:10.0.0.1"
+      secondary: "8.8.8.8,1.1.1.1"
+      module: ping
+      count: 2
+      timeout: 3
+      target: "{{secondary_item}}"
+      become: true

@@ -1,0 +1,7 @@
+unsupported_state=❌ [ldap_ad] Unsupported state: '{state}'. Only 'search' is allowed
+missing_args=❌ [ldap_ad] Missing required arguments: server, base_dn, filter
+connecting=🔍 [ldap_ad] Connecting to {server}:{port}...
+success=✅ [ldap_ad] Search completed successfully
+no_results=⚠️ [ldap_ad] No results found or an error occurred
+missing_dep=❌ [ldap_ad] 'ldapsearch' command is not available
+deps_ok=✅ [ldap_ad] Dependencies OK

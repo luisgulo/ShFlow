@@ -1,0 +1,24 @@
+tasks:
+  - name: Buscar usuarios en OpenLDAP
+    module: ldap_openldap
+    args:
+      state: search
+      server: ldap://ldap.example.com
+      port: 389
+      base_dn: "dc=example,dc=com"
+      filter: "(objectClass=person)"
+      attributes: "cn,mail,uid"
+      bind_dn: "cn=admin,dc=example,dc=com"
+      password: "secreta"
+
+  - name: Buscar usuarios en Active Directory
+    module: ldap_ad
+    args:
+      state: search
+      server: ldap://ad.example.local
+      port: 389
+      base_dn: "dc=example,dc=local"
+      filter: "(sAMAccountName=luisgulo)"
+      attributes: "cn,mail,sAMAccountName"
+      bind_dn: "CN=Administrador,CN=Users,DC=example,DC=local"
+      password: "secreta"

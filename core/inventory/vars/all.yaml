@@ -1,0 +1,20 @@
+# all.yaml — Variables globales para todos los hosts en ShFlow
+# Este archivo define valores comunes que se aplican a todos los hosts del inventario.
+# Sintaxis:
+# clave: valor
+# Las variables aquí definidas pueden ser sobrescritas por vars de grupo o de host.
+
+language: es 
+timezone: Europe/Madrid
+ntp_servers:
+  - 0.europe.pool.ntp.org
+  - 1.europe.pool.ntp.org
+default_packages:
+  - curl
+  - vim
+  - bash-completion
+ssh_port: 22
+become: true
+env: production
+vault_enabled: true
+vault_rotation_interval: 30d

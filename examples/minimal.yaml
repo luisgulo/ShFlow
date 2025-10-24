@@ -1,0 +1,15 @@
+tasks:
+  - name: Crear directorio de logs
+    module: file
+    args:
+      path: "/var/log/shflow"
+      state: present
+      type: directory
+      mode: "0755"
+      become: true
+
+  - name: Mostrar fecha en remoto
+    module: run
+    args:
+      command: "date"
+      become: false

@@ -1,0 +1,24 @@
+tasks:
+  - name: Clonar repo de configuración
+    module: git
+    args:
+      action: clone
+      repo: "https://github.com/luisgulo/configs.git"
+      dest: "/opt/configs"
+      become: true
+
+  - name: Copiar archivo de configuración
+    module: git
+    args:
+      action: fetch-file
+      repo: "https://github.com/luisgulo/configs.git"
+      branch: "main"
+      file_path: "nginx/nginx.conf"
+      dest: "/etc/nginx/nginx.conf"
+      become: true
+
+  - name: Reiniciar nginx
+    module: run
+    args:
+      command: "systemctl restart nginx"
+      become: true

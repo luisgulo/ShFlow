@@ -1,0 +1,12 @@
+start=🔐 Initializing passwordless SSH access for user: {user}
+inventory=📁 Inventory: {path}
+key=🔑 Public key: {key}
+missing_dep=❌ Requires '{cmd}' installed on the system
+no_hosts=❌ No hosts found in inventory.
+missing_ip=⚠️ Host '{host}' has no ansible_host defined
+checking=🖥️ Host: {host} ({ip})
+skip=   🔁 SSH initialization not needed
+copying=   🚀 Running ssh-copy-id for {user}@{ip}
+success=   ✅ Public key installed successfully
+fail=   ❌ Failed to install public key
+done=✅ SSH initialization process completed

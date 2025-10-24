@@ -1,0 +1,12 @@
+hosts: localhost
+parallelism: false
+tasks:
+  - name: Crear usuario de servicio
+    module: users
+    args:
+      state: create
+      username: servicio
+      home: /home/servicio
+      groups: docker
+      shell: /usr/sbin/nologin
+      become: true

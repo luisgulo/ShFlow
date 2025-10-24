@@ -1,0 +1,10 @@
+tasks:
+
+  - name: Ejecutar comando remoto en Windows vía SSH
+    module: winremote_exec
+    args:
+      winuser: guillermo
+      winpassword: puertas
+      port: 2222
+      #command: "Get-Process | Where-Object {$_.CPU -gt 1}"
+      command: "whoami"

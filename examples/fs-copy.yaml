@@ -1,0 +1,6 @@
+- name: Copiar config
+  module: fs
+  args:
+    action: copy
+    src: /etc/nginx/nginx.conf
+    dest: /tmp/nginx.conf.bak

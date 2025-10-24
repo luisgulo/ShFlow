@@ -1,0 +1,46 @@
+hosts: localhost
+parallelism: false
+
+tasks:
+  - name: Crear cron ver_df cada hora
+    module: cron
+    args:
+      alias: ver_df
+      user: root
+      state: present
+      schedule: "0 * * * *"
+      command: "df -h > /tmp/filesize.txt"
+
+  - name: Listar cron de root (tras creación)
+    module: cron
+    args:
+      user: root
+      state: list
+
+  - name: Modificar cron ver_df a cada 3 horas
+    module: cron
+    args:
+      alias: ver_df
+      user: root
+      state: present
+      schedule: "0 */3 * * *"
+      command: "df -h > /tmp/filesize.txt"
+
+  - name: Listar cron de root (tras modificación)
+    module: cron
+    args:
+      user: root
+      state: list
+
+  - name: Eliminar cron ver_df
+    module: cron
+    args:
+      alias: ver_df
+      user: root
+      state: absent
+
+  - name: Listar cron de root (tras eliminación)
+    module: cron
+    args:
+      user: root
+      state: list

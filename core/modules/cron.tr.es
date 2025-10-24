@@ -1,0 +1,12 @@
+missing_args=❌ [cron] Faltan argumentos obligatorios: 'user' y 'state'
+user_not_found=❌ [cron] El usuario '{user}' no existe en el sistema
+checking=🕒 [cron] Revisando entradas de cron para usuario '{user}'...
+list=📋 [cron] Entradas actuales para '{user}':
+no_entries=⚠️ [cron] No hay entradas visibles
+removed=➖ [cron] Entrada '{alias}' eliminada correctamente
+not_found=⚠️ [cron] Entrada '{alias}' no encontrada, no se eliminó nada
+missing_present=❌ [cron] Para 'present' se requieren: alias, schedule y command
+added=➕ [cron] Entrada '{alias}' creada/modificada correctamente
+unsupported=❌ [cron] Estado desconocido: '{state}'. Usa 'present', 'absent' o 'list'
+missing_sudo=❌ [cron] El comando 'sudo' no está disponible
+deps_ok=✅ [cron] Dependencias OK

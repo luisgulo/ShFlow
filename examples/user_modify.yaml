@@ -1,0 +1,12 @@
+hosts: localhost
+parallelism: false
+tasks:
+  - name: Modificar shell de servicio
+    module: users
+    args:
+      state: modify
+      username: servicio
+      home: /home/servicio
+      groups: docker
+      shell: /bin/bash
+      become: true

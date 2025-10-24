@@ -1,0 +1,43 @@
+parallelism: false
+
+tasks:
+  - name: Verificar disponibilidad de chronyc
+    module: run
+    args:
+      command: "command -v chronyc >/dev/null"
+    capture_err: chrony_err
+
+  - name: Abortar si chronyc no está disponible
+    module: run
+    args:
+      command: "echo '{{ chrony_err }}' | grep -q '1' && echo '❌ Chrony no está instalado. No se puede ajustar la hora.' && exit 1 || true"
+
+  - name: Sincronizar hora con Chrony
+    module: run
+    args:
+      command: "chronyc -a makestep"
+      become: true
+    capture_log: sync_result
+    capture_err: sync_err
+
+  - name: Mostrar valores de sincronizacion
+    module: echo
+    args:
+      message: "Cod.Err: {{ sync_err }} - {{ sync_result }}"
+
+  - name: Validar sincronización
+    module: run
+    args:
+      command: "echo '{{ sync_result }}' | grep -q '200 OK' && echo '✅ Hora sincronizada correctamente' || echo '❌ Fallo en sincronización'"
+      
+
+  - name: Verificar estado del reloj
+    module: run
+    args:
+      command: "timedatectl status"
+
+  - name: ls en root
+    module: run
+    args:
+      command: "ls -l /root"
+      become: true

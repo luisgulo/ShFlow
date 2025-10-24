@@ -1,0 +1,17 @@
+missing_args=❌ [euvd_check] Missing arguments: enisa_id and package are required.
+start=🧬 [euvd_check] Checking {id} in package '{package}' on {host}...
+detected_dpkg=🔧 Package manager detected: dpkg
+detected_rpm=🔧 Package manager detected: rpm
+no_pkg=❌ [euvd_check] No compatible package manager detected on host
+version_fail=⚠️ [euvd_check] Could not detect installed version of '{package}' on {host}.
+version_ok=🔍 Installed version: {version}
+query_enisa=🌐 Querying ENISA for {id}...
+invalid_response=⚠️ [euvd_check] ENISA response does not contain valid data for {id}.
+response_trunc=🔍 Response (truncated): {snippet}
+score=📊 CVSS Score: {score}
+desc=📝 Description: {desc}
+aliases=🔗 Aliases: {aliases}
+vulnerable=❌ [euvd_check] Host {host} is vulnerable to {id}
+safe=✅ [euvd_check] Host {host} does not appear affected by {id}
+missing_dep=❌ [euvd_check] Command '{cmd}' is not available
+deps_ok=✅ [euvd_check] ssh, curl and jq are available.

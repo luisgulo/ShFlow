@@ -1,0 +1,14 @@
+start=🔍 Evaluando confianza SSH y sudo para usuario: {user}
+inventory=📁 Inventario: {path}
+report=📄 Informe: {path}
+missing_dep=❌ Requiere '{cmd}' versión Go para procesar el inventario YAML
+report_title=Informe de confianza generado por shflow-trust
+report_date=Fecha: {date}
+no_hosts=❌ No se encontraron hosts en el inventario.
+missing_ip=⚠️ Host '{host}' sin ansible_host definido
+checking=🖥️ Host: {host} ({ip})
+ssh_ok=   ✅ SSH: ok
+ssh_fail=   ❌ SSH: fallo de conexión
+sudo_ok=   ✅ SUDO: ok
+sudo_pw=   ⚠️ SUDO: requiere contraseña o no permitido
+done=✅ Informe completado: {path}

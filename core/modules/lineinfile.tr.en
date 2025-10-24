@@ -1,0 +1,9 @@
+creating=📄 [lineinfile] Creating file: {path}
+missing_file=❌ [lineinfile] File does not exist and create=false
+backup=📦 Backup created: {path}.bak
+replacing=🔁 [lineinfile] Replacing line matching: {regexp}
+inserting=➕ [lineinfile] Inserting after: {after}
+exists=✅ [lineinfile] Line already present: "{line}"
+appending=➕ [lineinfile] Appending line at the end
+missing_deps=❌ [lineinfile] Missing dependencies: {cmds}
+deps_ok=✅ [lineinfile] All dependencies are available

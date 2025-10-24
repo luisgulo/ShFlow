@@ -1,0 +1,15 @@
+tasks:
+  - name: Crear directorio temporal
+    module: file
+    args:
+      path: "/tmp/shflow"
+      state: present
+      type: directory
+      mode: "0755"
+      become: true
+
+  - name: Mostrar fecha en remoto
+    module: run
+    args:
+      command: "date"
+      become: false

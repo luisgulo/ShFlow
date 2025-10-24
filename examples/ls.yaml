@@ -1,0 +1,13 @@
+tasks:
+  - name: Listar directorios tmp
+    module: run
+    args:
+      command: "ls -l /tmp"
+      become: false
+
+  - name: Listar directorios /root
+    module: run
+    args:
+      command: "ls -l /root"
+      become: true
+

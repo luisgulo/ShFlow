@@ -1,0 +1,4 @@
+action_ok=📁 [{action}] {src} → {dest}
+unsupported=❌ [fs] Unsupported action '{action}'.
+missing_deps=❌ [fs] ssh is not available.
+deps_ok=✅ [fs] ssh is available.

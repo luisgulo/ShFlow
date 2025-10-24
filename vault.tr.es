@@ -1,0 +1,13 @@
+encrypt_asym=🔐 Usando cifrado asimétrico para '{key}'
+encrypt_sym=🔐 Usando cifrado simétrico para '{key}'
+missing_key=❌ No se encontró clave para cifrar. Ejecuta vault-init.sh primero.
+secret_saved=✅ Secreto '{key}' guardado en {dir}
+secret_removed=🗑️ Secreto '{key}' eliminado.
+edit_prompt=🔑 Nuevo valor para '{key}':
+cli_prompt=🔑 Valor para '{key}':
+exists=✅ Existe
+not_exists=❌ No existe
+usage=Uso: vault.sh {add|get|show|edit|remove|list|export|exists} <clave>
+action_invalid=❌ [vault] Acción '{action}' no soportada.
+missing_dep=❌ [vault] gpg no está disponible.
+dep_ok=✅ [vault] gpg disponible.

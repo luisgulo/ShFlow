@@ -1,0 +1,8 @@
+tasks:
+  - name: Detectar protocolos remotos en equipo Windows
+    module: winremote_detect
+    args:
+      ssh_port: 22
+      winrm_port: 5985
+
+

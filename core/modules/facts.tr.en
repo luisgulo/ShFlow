@@ -1,0 +1,5 @@
+debug_prefix=🔍 SSH line: {prefix}
+unsupported_format=❌ [facts] Format '{format}' not supported.
+saved=💾 [facts] Report saved to: {output}
+missing_cmd=⚠️ [facts] '{cmd}' not available locally. Assuming it exists on remote host.
+cmd_ok=✅ [facts] '{cmd}' available locally.

@@ -1,0 +1,8 @@
+tasks:
+  - name: Construir imagen test-shflow desde debian:trixie
+    module: docker
+    args:
+      action: build
+      image: test-shflow
+      path: /tmp/shflow-build/
+      become: true

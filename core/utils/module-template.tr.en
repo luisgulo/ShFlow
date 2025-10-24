@@ -1,0 +1,3 @@
+usage=❌ Usage: module-template.sh <module_name>
+exists=⚠️ Module '{name}' already exists in {dir}
+created=✅ Module '{name}' created at {path}

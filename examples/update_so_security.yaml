@@ -1,0 +1,8 @@
+tasks:
+  - name: Aplicar parches de seguridad (solo RPM)
+    module: package
+    args:
+      state: system-update
+      update_type: security
+      become: true
+

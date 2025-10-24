@@ -1,0 +1,17 @@
+# hosts.yaml — Inventario principal de ShFlow
+# Este archivo define los hosts y su pertenencia a grupos.
+# Sintaxis:
+# all:
+#   hosts:
+#     nombre_host:
+#       ansible_host: <IP o FQDN>
+#       become: <true|false>
+#       <clave>: <valor>
+#   children:
+#     nombre_grupo:
+#       hosts:
+#         nombre_host:
+
+all:
+  hosts: {}
+  children: {}

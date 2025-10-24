@@ -1,0 +1,10 @@
+- name: Crear usuarios sin detenerse ante errores
+  module: loop
+  args:
+    items: alice,bob,carol
+    module: useradd
+    fail_fast: false
+    args:
+      name: {{item}}
+      shell: /bin/bash
+      become: true

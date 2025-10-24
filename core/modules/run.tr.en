@@ -1,0 +1,4 @@
+start=📡 [run] Executing on {host}: {prefix} {command}
+vault_fail=❌ [run] Failed to retrieve secret '{vault_key}'
+missing_deps=❌ [run] ssh is not available.
+deps_ok=✅ [run] ssh is available.

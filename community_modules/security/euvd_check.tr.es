@@ -1,0 +1,17 @@
+missing_args=❌ [euvd_check] Faltan argumentos: enisa_id y package son obligatorios.
+start=🧬 [euvd_check] Verificando {id} en paquete '{package}' en {host}...
+detected_dpkg=🔧 Gestor de paquetes detectado: dpkg
+detected_rpm=🔧 Gestor de paquetes detectado: rpm
+no_pkg=❌ [euvd_check] No se detectó gestor de paquetes compatible en el host
+version_fail=⚠️ [euvd_check] No se pudo detectar la versión instalada de '{package}' en {host}.
+version_ok=🔍 Versión instalada: {version}
+query_enisa=🌐 Consultando ENISA para {id}...
+invalid_response=⚠️ [euvd_check] La respuesta de ENISA no contiene datos válidos para {id}.
+response_trunc=🔍 Respuesta (truncada): {snippet}
+score=📊 Puntuación CVSS: {score}
+desc=📝 Descripción: {desc}
+aliases=🔗 Alias: {aliases}
+vulnerable=❌ [euvd_check] Host {host} está vulnerable a {id}
+safe=✅ [euvd_check] Host {host} no parece afectado por {id}
+missing_dep=❌ [euvd_check] El comando '{cmd}' no está disponible
+deps_ok=✅ [euvd_check] ssh, curl y jq disponibles.

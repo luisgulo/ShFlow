@@ -1,0 +1,6 @@
+missing_args=❌ [winremote_exec_winrm] Missing parameters. host, winuser, winpassword and command are required.
+start=🔧 [winremote_exec_winrm] Executing remote command on {host}:{port} as {user}...
+success=✅ [winremote_exec_winrm] Command executed successfully via WSMan.
+fail=❌ [winremote_exec_winrm] Error executing command (code {code}).
+missing_wsman=❌ [winremote_exec_winrm] 'wsman' client is not available.
+wsman_ok=✅ [winremote_exec_winrm] 'wsman' client is available.

@@ -1,0 +1,10 @@
+start=📦 [package] Estado: {state} | Paquete: {name} | Gestor: detectando...
+no_pkg_mgr=❌ [package] No se detectó gestor de paquetes compatible en el host.
+unsupported_mgr=❌ [package] Gestor '{mgr}' no soportado.
+unsupported_state_apt=❌ [package] Estado '{state}' no soportado para APT.
+unsupported_state_rpm=❌ [package] Estado '{state}' no soportado para RPM.
+update_apt=🔄 [package] Actualización completa del sistema (.deb)
+update_rpm_security=🔐 [package] Actualización de seguridad (.rpm)
+update_rpm_full=🔄 [package] Actualización completa del sistema (.rpm)
+missing_deps=❌ [package] ssh no está disponible.
+deps_ok=✅ [package] ssh disponible.

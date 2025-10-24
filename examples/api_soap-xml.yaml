@@ -1,0 +1,14 @@
+tasks:
+  - name: Consulta SOAP de prueba
+    module: api
+    args:
+      method: soap
+      url: http://demo1144442.mockable.io/
+      headers: Content-Type:text/xml
+      body: |
+        <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+          <soapenv:Body>
+            <ns:getStatus xmlns:ns="http://demo1144442.mockable.io/"/>
+          </soapenv:Body>
+        </soapenv:Envelope>
+      parse: xml

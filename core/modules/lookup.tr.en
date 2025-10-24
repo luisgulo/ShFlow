@@ -1,0 +1,3 @@
+not_found=❌ [lookup] Secret '{key}' not found in {path}
+missing_deps=❌ [lookup] gpg is not available.
+deps_ok=✅ [lookup] gpg is available.

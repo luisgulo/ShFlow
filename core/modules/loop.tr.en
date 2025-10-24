@@ -1,0 +1,7 @@
+missing_args=❌ [loop] Missing required arguments: items=... module=...
+fail_item=⚠️ [loop] Iteration failed with '{item}'
+fail_secondary=⚠️ [loop] Iteration failed with '{item}' and '{secondary}'
+module_not_found=❌ [loop] Module '{module}' not found
+task_not_found=❌ [loop] Function '{module}_task' not found
+missing_deps=❌ [loop] Missing dependencies: {cmds}
+deps_ok=✅ [loop] Dependencies available.

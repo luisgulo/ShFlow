@@ -1,0 +1,10 @@
+parallelism: false
+
+tasks:
+  - name: Actualizar sistema completo
+    module: package
+    args:
+      state: system-update
+      update_type: full
+      become: true
+

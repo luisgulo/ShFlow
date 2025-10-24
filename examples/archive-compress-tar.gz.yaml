@@ -1,0 +1,9 @@
+tasks:
+  - name: Comprimir logs
+    module: archive
+    args:
+      action: compress
+      format: tar
+      files: /var/log/boot.log,/var/log/lastlog
+      output: /tmp/logs.tar.gz
+      become: true

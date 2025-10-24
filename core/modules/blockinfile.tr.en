@@ -1,0 +1,7 @@
+creating=📄 [blockinfile] Creating file: {path}
+missing_file=❌ [blockinfile] File does not exist and create=false
+backup=📦 Backup created: {path}.bak
+replacing=🔁 [blockinfile] Replacing existing block with marker '{marker}'
+inserting=➕ [blockinfile] Inserting delimited block with marker '{marker}'
+missing_deps=❌ [blockinfile] Missing dependencies: {cmds}
+deps_ok=✅ [blockinfile] All dependencies are available

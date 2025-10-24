@@ -1,0 +1,6 @@
+- name: Renombrar backup
+  module: fs
+  args:
+    action: rename
+    src: /home/user/backup.tar.gz
+    dest: /home/user/backup_old.tar.gz

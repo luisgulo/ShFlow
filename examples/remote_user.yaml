@@ -1,0 +1,9 @@
+vars:
+  remote_user: other
+
+tasks:
+  - name: listar directorio de root desde el usuario "other" que tiene sudo
+    module: run
+    args:
+      command: "ls -l /root"
+      become: true

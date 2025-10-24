@@ -1,0 +1,32 @@
+parallelism: false
+hosts: localhost
+
+tasks:
+  - name: Ejecutar comando simple
+    module: run
+    args:
+      command: "ls -L /tmpAAA"
+      become: false
+    capture_log: ls_resultado
+    capture_err: ls_error
+
+  - name: Mostrar capture_log con modulo echo
+    module: echo
+    args:
+      message: "{{ ls_resultado }}"
+      become: false
+    condition: "[ {{ ls_error }} -eq 0 ]"
+
+  - name: Mostrar capture_err con modulo echo
+    module: echo
+    args:
+      message: "{{ ls_error }}"      
+      become: false
+
+  - name: Prueba sustitucion en modulo echo
+    module: echo
+    args:
+      variableA: "Texto de variable A"
+      variableB: "Texto de variable B"
+      message: "Mostramos A: {{ variableA }} y B: {{ variableB }}"      
+      become: false

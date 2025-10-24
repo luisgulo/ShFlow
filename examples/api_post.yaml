@@ -1,0 +1,10 @@
+tasks:
+  - name: Crear producto de prueba
+    module: api
+    args:
+      method: post
+      url: https://fakestoreapi.com/products
+body: |
+  {"title":"Producto ShFlow","price":99.99,"description":"Generado desde módulo api.sh","image":"https://example.com/img.png","category":"electronics"}
+      parse: json
+

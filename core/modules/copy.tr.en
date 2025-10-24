@@ -1,0 +1,7 @@
+missing_args=❌ [copy] Missing parameters: src and dest are required
+copying=📤 [copy] Copying '{src}' to host '{host}'...
+scp_fail=❌ [copy] Failed to copy '{src}' to host '{host}'
+moving=📦 [copy] Moving file to final destination: '{dest}'
+done=✅ [copy] File successfully installed at '{dest}'
+missing_deps=❌ [copy] Missing dependencies: {cmds}
+deps_ok=✅ [copy] All dependencies are available

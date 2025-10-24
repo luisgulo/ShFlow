@@ -1,0 +1,14 @@
+mkdir_fail=❌ [archive] No se pudo crear el directorio destino: {dest}
+compressed_tar=📦 [archive] Comprimido en TAR: {output}
+compressed_zip=📦 [archive] Comprimido en ZIP: {output}
+compressed_gzip=📦 [archive] GZIP: {file}.gz
+compressed_bzip2=📦 [archive] BZIP2: {file}.bz2
+decompressed_gzip=📂 [archive] Descomprimido GZIP: {archive}
+decompressed_bzip2=📂 [archive] Descomprimido BZIP2: {archive}
+decompressed_zip=📂 [archive] Descomprimido ZIP en: {dest}
+extracted_tar=📂 [archive] Extraído TAR en: {dest}
+extracted_zip=📂 [archive] Extraído ZIP en: {dest}
+unsupported_format=❌ [archive] Formato '{format}' no soportado
+unsupported_action=❌ [archive] Acción '{action}' no soportada
+missing_cmd=⚠️ [archive] '{cmd}' no disponible localmente. Se asumirá que existe en el host remoto.
+cmd_ok=✅ [archive] '{cmd}' disponible localmente.

@@ -1,0 +1,5 @@
+- name: Eliminar temporal
+  module: fs
+  args:
+    action: delete
+    path: /tmp/debug.log
