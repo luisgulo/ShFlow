@@ -26,6 +26,8 @@ Autor: **Luis GuLo** — 2025
 
 ---
 
+---
+
 # ⚙️ ShFlow — Declarative Shell Automation
 
 **ShFlow** is a modular, traceable and extensible tool for executing tasks on Linux systems using YAML playbooks. 
