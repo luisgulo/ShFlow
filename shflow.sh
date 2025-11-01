@@ -37,6 +37,7 @@ PLAYBOOK=""
 HOST=""
 GROUP=""
 DEBUG=false
+PARALLELISM=""
 declare -A shflow_vars
 
 # 📣 Trazas condicionales
@@ -294,8 +295,6 @@ run_for_host() {
   echo -e "\n🖥️ Host: $CURRENT_HOST\n$(cat "$output_buffer")"
   rm -f "$output_buffer"
 }
-
-PARALLELISM=false
 
 # ⚙️ Ejecución paralela o secuencial
 if [[ "$PARALLELISM" == "true" ]]; then
