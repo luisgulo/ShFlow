@@ -4,4 +4,4 @@ tasks:
     args:
       count: 3
       timeout: 5
-      become: false
+      become: true

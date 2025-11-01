@@ -2,7 +2,7 @@
 # ShFlow Playbook Runner
 # License: GPLv3
 # Author: Luis GuLo
-# Version: 1.8.0
+# Version: 1.8.2
 
 set -euo pipefail
 
@@ -197,15 +197,20 @@ run_for_host() {
     [[ "$HOST_IP" == "null" || -z "$HOST_IP" ]] && HOST_IP="$CURRENT_HOST"
     [[ "$LABEL" == "null" || -z "$LABEL" ]] && LABEL="$CURRENT_HOST"
 
-    echolog 1 "$(render_msg "${tr[host_info]:-🔧 Host: {host} ({ip})}" "host=$CURRENT_HOST" "ip=$HOST_IP")"
-    echolog 2 "$(render_msg "${tr[ssh_user]:-👤 Usuario SSH: {user}}" "user=$REMOTE_USER")"
+    #echolog 1 "$(render_msg "${tr[host_info]:-🔧 Host: {host} ({ip})}" "host=$CURRENT_HOST" "ip=$HOST_IP")"
+    #echolog 2 "$(render_msg "${tr[ssh_user]:-👤 Usuario SSH: {user}}" "user=$REMOTE_USER")"
 
-    # (Las tareas se ejecutarán en Parte 4)
-  } > "$output_buffer" 2>&1
+    echo  "$(render_msg "${tr[host_info]:-🔧 Host: {host} ({ip})}" "host=$CURRENT_HOST" "ip=$HOST_IP")"
+    echo "$(render_msg "${tr[ssh_user]:-👤 Usuario SSH: {user}}" "user=$REMOTE_USER")"
 
-  echo -e "\n🖥️ Host: $CURRENT_HOST\n$(cat "$output_buffer")"
-  rm -f "$output_buffer"
-}
+
+#    # (Las tareas se ejecutarán en Parte 4)
+#  } > "$output_buffer" 2>&1
+
+echo "variable HOST: $HOST"
+#  echo -e "\n🖥️ Host: $CURRENT_HOST\n$(cat "$output_buffer")"
+#  rm -f "$output_buffer"
+#}
 
     for ((i=0; i<NUM_TASKS; i++)); do
       VERBOSITY_RAW=$(echo "$TASKS_JSON" | jq -r ".[$i].verbosity // empty")
@@ -235,14 +240,17 @@ run_for_host() {
         COND_EVAL="${COND_EVAL//\{\{ label \}\}/$LABEL}"
 
         if ! bash -c "$COND_EVAL"; then
-          echolog 2 "$(render_msg "${tr[task_skipped]:-⏭️  Tarea OMITIDA \"{name}\" por condición: {condition}}" "name=$NAME" "condition=$COND_EVAL")"
+          #echolog 2 "$(render_msg "${tr[task_skipped]:-⏭️  Tarea OMITIDA \"{name}\" por condición: {condition}}" "name=$NAME" "condition=$COND_EVAL")"
+          echo "$(render_msg "${tr[task_skipped]:-⏭️  Tarea OMITIDA \"{name}\" por condición: {condition}}" "name=$NAME" "condition=$COND_EVAL")"
           continue
         else
-          echolog 2 "$(render_msg "${tr[condition_met]:-🔍 Condición cumplida: {condition}}" "condition=$COND_EVAL")"
+          #echolog 2 "$(render_msg "${tr[condition_met]:-🔍 Condición cumplida: {condition}}" "condition=$COND_EVAL")"
+          echo "$(render_msg "${tr[condition_met]:-🔍 Condición cumplida: {condition}}" "condition=$COND_EVAL")"
         fi
       fi
 
-      echolog 1 "$(render_msg "${tr[task_running]:-🔧 Ejecutando tarea: \"{name}\" (módulo: \"{module}\")}" "name=$NAME" "module=$MODULE")"
+      #echolog 1 "$(render_msg "${tr[task_running]:-🔧 Ejecutando tarea: \"{name}\" (módulo: \"{module}\")}" "name=$NAME" "module=$MODULE")"
+      echo "$(render_msg "${tr[task_running]:-🔧 Ejecutando tarea: \"{name}\" (módulo: \"{module}\")}" "name=$NAME" "module=$MODULE")"
 
       MODULE_PATH=""
       SEARCH_PATHS=("$PROJECT_ROOT/core/modules" "$PROJECT_ROOT/user_modules" "$PROJECT_ROOT/community_modules")
@@ -295,6 +303,8 @@ run_for_host() {
   echo -e "\n🖥️ Host: $CURRENT_HOST\n$(cat "$output_buffer")"
   rm -f "$output_buffer"
 }
+
+PARALLELISM=false
 
 # ⚙️ Ejecución paralela o secuencial
 if [[ "$PARALLELISM" == "true" ]]; then
