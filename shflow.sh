@@ -203,15 +203,6 @@ run_for_host() {
     echo  "$(render_msg "${tr[host_info]:-🔧 Host: {host} ({ip})}" "host=$CURRENT_HOST" "ip=$HOST_IP")"
     echo "$(render_msg "${tr[ssh_user]:-👤 Usuario SSH: {user}}" "user=$REMOTE_USER")"
 
-
-#    # (Las tareas se ejecutarán en Parte 4)
-#  } > "$output_buffer" 2>&1
-
-echo "variable HOST: $HOST"
-#  echo -e "\n🖥️ Host: $CURRENT_HOST\n$(cat "$output_buffer")"
-#  rm -f "$output_buffer"
-#}
-
     for ((i=0; i<NUM_TASKS; i++)); do
       VERBOSITY_RAW=$(echo "$TASKS_JSON" | jq -r ".[$i].verbosity // empty")
       TASK_VERBOSITY="$SHFLOW_VERBOSITY"
