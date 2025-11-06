@@ -12,7 +12,7 @@ INVENTORY="$PROJECT_ROOT/core/inventory/hosts.yaml"
 VAULT_DIR="$PROJECT_ROOT/core/vault"
 VAULT_KEY="${VAULT_KEY:-$HOME/.shflow.key}"
 
-# Yq segun arquitectura
+# 🔧 yq segun arquitectura
 ARCH=$(uname -m)
 case "$ARCH" in
   x86_64) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_amd64" ;;
@@ -20,7 +20,7 @@ case "$ARCH" in
   aarch64) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_arm64" ;;
   armv7l|armv6l) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_arm" ;;
   *) echo "❌ Arquitectura no soportada: $ARCH"; exit 1 ;;
-   esac
+esac
 
 # 🌐 Cargar render_msg y traducciones
 COMMON_LIB="$PROJECT_ROOT/core/lib/translate_msg.sh"

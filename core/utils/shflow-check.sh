@@ -20,7 +20,17 @@ if ! declare -f render_msg &>/dev/null; then
   [[ -f "$COMMON_LIB" ]] && source "$COMMON_LIB"
 fi
 
-GLOBAL_TOOLS=("bash" "ssh" "scp" "git" "curl" "jq" "yq" "gpg")
+# 🔧 yq segun arquitectura
+ARCH=$(uname -m)
+case "$ARCH" in
+  x86_64) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_amd64" ;;
+  i686|i386) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_386" ;;
+  aarch64) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_arm64" ;;
+  armv7l|armv6l) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_arm" ;;
+  *) echo "❌ Arquitectura no soportada: $ARCH"; exit 1 ;;
+esac
+
+GLOBAL_TOOLS=("bash" "ssh" "scp" "git" "curl" "jq" "$YQ_BIN" "gpg")
 
 REQUIRED_PATHS=(
   "$PROJECT_ROOT/core/modules"
@@ -47,6 +57,7 @@ check_global_tools() {
       echo "$(render_msg "${tr[tool_missing]}" "tool=$tool")"
       missing=1
     else
+      tool=$(basename $tool)
       echo "$(render_msg "${tr[tool_ok]}" "tool=$tool")"
     fi
   done
