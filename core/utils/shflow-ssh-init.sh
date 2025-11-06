@@ -2,7 +2,7 @@
 # Utility: shflow-ssh-init
 # Description: Inicializa acceso SSH sin contraseña en los hosts del inventario
 # Author: Luis GuLo
-# Version: 0.2.0
+# Version: 0.2.1
 
 set -euo pipefail
 
@@ -12,6 +12,16 @@ INVENTORY="$PROJECT_ROOT/core/inventory/hosts.yaml"
 TIMEOUT=5
 USER="${USER:-$(whoami)}"
 KEY="${KEY:-$HOME/.ssh/id_rsa.pub}"
+
+# 🔧 yq segun arquitectura
+ARCH=$(uname -m)
+case "$ARCH" in
+  x86_64) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_amd64" ;;
+  i686|i386) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_386" ;;
+  aarch64) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_arm64" ;;
+  armv7l|armv6l) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_arm" ;;
+  *) echo "❌ Arquitectura no soportada: $ARCH"; exit 1 ;;
+esac
 
 # 🧩 Cargar render_msg si no está disponible
 COMMON_LIB="$PROJECT_ROOT/core/lib/translate_msg.sh"
@@ -33,7 +43,7 @@ echo "$(render_msg "${tr[key]}" "key=$KEY")"
 echo ""
 
 # 🧪 Validar dependencias
-for cmd in yq ssh ssh-copy-id; do
+for cmd in $YQ_BIN ssh ssh-copy-id; do
   if ! command -v "$cmd" &>/dev/null; then
     echo "$(render_msg "${tr[missing_dep]}" "cmd=$cmd")"
     exit 1
@@ -42,7 +52,7 @@ done
 
 # 🔁 Extraer hosts
 HOSTS=()
-HOSTS_RAW=$(yq ".all.hosts | keys | .[]" "$INVENTORY")
+HOSTS_RAW=$($YQ_BIN eval -o=json ".all.hosts | keys | .[]" "$INVENTORY")
 [ -z "$HOSTS_RAW" ] && echo "${tr[no_hosts]:-❌ No se encontraron hosts en el inventario.}" && exit 1
 
 while IFS= read -r line; do
@@ -51,7 +61,7 @@ done <<< "$HOSTS_RAW"
 
 # 🔍 Evaluar cada host
 for host in "${HOSTS[@]}"; do
-  IP=$(yq -r ".all.hosts.\"$host\".ansible_host" "$INVENTORY")
+  IP=$($YQ_BIN eval -o=json ".all.hosts.\"$host\".ansible_host" "$INVENTORY")
   [[ "$IP" == "null" || -z "$IP" ]] && echo "$(render_msg "${tr[missing_ip]}" "host=$host")" && continue
 
   echo "$(render_msg "${tr[checking]}" "host=$host" "ip=$IP")"
