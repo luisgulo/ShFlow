@@ -2,7 +2,7 @@
 # ShFlow Playbook Runner
 # License: GPLv3
 # Author: Luis GuLo
-# Version: 1.8.2
+# Version: 1.8.3
 
 set -euo pipefail
 
@@ -11,6 +11,16 @@ PROJECT_ROOT="${SHFLOW_HOME:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 INVENTORY="$PROJECT_ROOT/core/inventory/hosts.yaml"
 VAULT_DIR="$PROJECT_ROOT/core/vault"
 VAULT_KEY="${VAULT_KEY:-$HOME/.shflow.key}"
+
+# Yq segun arquitectura
+ARCH=$(uname -m)
+case "$ARCH" in
+  x86_64) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_amd64" ;;
+  i686|i386) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_386" ;;
+  aarch64) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_arm64" ;;
+  armv7l|armv6l) YQ_BIN="$PROJECT_ROOT/core/utils/yq_linux_arm" ;;
+  *) echo "❌ Arquitectura no soportada: $ARCH"; exit 1 ;;
+   esac
 
 # 🌐 Cargar render_msg y traducciones
 COMMON_LIB="$PROJECT_ROOT/core/lib/translate_msg.sh"
@@ -134,7 +144,8 @@ done
 [ -z "$PLAYBOOK" ] && echo "${tr[no_playbook]:-❌ Playbook no especificado. Usa -f <archivo.yaml>}" && exit 1
 [ ! -f "$PLAYBOOK" ] && echo "$(render_msg "${tr[playbook_not_found]:-❌ Playbook no encontrado: {file}}" "file=$PLAYBOOK")" && exit 1
 
-TASKS_JSON=$(yq -r .tasks "$PLAYBOOK")
+TASKS_JSON=$($YQ_BIN eval -o=json '.tasks' "$PLAYBOOK")
+
 NUM_TASKS=$(echo "$TASKS_JSON" | jq 'length')
 [ "$NUM_TASKS" -eq 0 ] && echo "${tr[no_tasks]:-❌ No se encontraron tareas en el playbook.}" && exit 1
 
@@ -143,15 +154,15 @@ HOSTS=()
 if [ -n "$HOST" ]; then
   HOSTS+=("$HOST")
 elif [ -n "$GROUP" ]; then
-  HOSTS_RAW=$(yq ".all.children.\"$GROUP\".hosts | keys | .[]" "$INVENTORY")
+  HOSTS_RAW=$($YQ_BIN eval -o=json ".all.children.\"$GROUP\".hosts | keys | .[]" "$INVENTORY")
   [ -z "$HOSTS_RAW" ] && echo "$(render_msg "${tr[group_not_found]:-❌ Grupo '{group}' no encontrado en el inventario.}" "group=$GROUP")" && exit 1
   while IFS= read -r line; do HOSTS+=("$(echo "$line" | sed 's/^\"\(.*\)\"$/\1/')"); done <<< "$HOSTS_RAW"
 else
-  HOSTS_LINE=$(yq -r '.hosts // ""' "$PLAYBOOK")
+  HOSTS_LINE=$($YQ_BIN eval -o=json  '.hosts // ""' "$PLAYBOOK")
   if [ -z "$HOSTS_LINE" ]; then
-    HOSTGROUP=$(yq -r '.hostgroup // ""' "$PLAYBOOK")
+    HOSTGROUP=$($YQ_BIN eval -o=json '.hostgroup // ""' "$PLAYBOOK")
     if [ -n "$HOSTGROUP" ]; then
-      HOSTS_RAW=$(yq ".all.children.\"$HOSTGROUP\".hosts | keys | .[]" "$INVENTORY")
+      HOSTS_RAW=$($YQ_BIN eval -o=json ".all.children.\"$HOSTGROUP\".hosts | keys | .[]" "$INVENTORY")
       [ -z "$HOSTS_RAW" ] && echo "$(render_msg "${tr[group_not_found]:-❌ Grupo '{group}' no encontrado en el inventario.}" "group=$HOSTGROUP")" && exit 1
       while IFS= read -r line; do HOSTS+=("$(echo "$line" | sed 's/^\"\(.*\)\"$/\1/')"); done <<< "$HOSTS_RAW"
     else
@@ -167,18 +178,18 @@ fi
 # 📦 Carga de variables globales
 GLOBAL_VARS="$PROJECT_ROOT/core/inventory/vars/all.yaml"
 if [[ -f "$GLOBAL_VARS" ]]; then
-  GLOBAL_KEYS=$(yq -r 'keys[]' "$GLOBAL_VARS")
+  GLOBAL_KEYS=$($YQ_BIN eval -o=json 'keys[]' "$GLOBAL_VARS")
   for key in $GLOBAL_KEYS; do
-    raw_value=$(yq -r ".\"$key\"" "$GLOBAL_VARS")
+    raw_value=$($YQ_BIN eval -o=json ".\"$key\"" "$GLOBAL_VARS")
     resolved_value="$(resolve_vault_references "$raw_value")"
     shflow_vars["$key"]="$resolved_value"
   done
 fi
 
 # 📦 Carga de variables locales del playbook
-VARS_KEYS=$(yq -r '.vars | keys[]' "$PLAYBOOK" 2>/dev/null || true)
+VARS_KEYS=$($YQ_BIN eval -o=json '.vars | keys[]' "$PLAYBOOK" 2>/dev/null || true)
 for key in $VARS_KEYS; do
-  raw_value=$(yq -r ".vars.\"$key\"" "$PLAYBOOK")
+  raw_value=$($YQ_BIN eval -o=json ".vars.\"$key\"" "$PLAYBOOK")
   resolved_value="$(resolve_vault_references "$raw_value")"
   shflow_vars["$key"]="$resolved_value"
 done
@@ -193,8 +204,8 @@ run_for_host() {
   local output_buffer=$(mktemp)
 
   {
-    HOST_IP=$(yq ".all.hosts.\"$CURRENT_HOST\".ansible_host" "$INVENTORY" | sed 's/^\"\(.*\)\"$/\1/')
-    LABEL=$(yq ".all.hosts.\"$CURRENT_HOST\".label" "$INVENTORY" | sed 's/^\"\(.*\)\"$/\1/')
+    HOST_IP=$($YQ_BIN eval -o=json ".all.hosts.\"$CURRENT_HOST\".ansible_host" "$INVENTORY" | sed 's/^\"\(.*\)\"$/\1/')
+    LABEL=$($YQ_BIN eval -o=json ".all.hosts.\"$CURRENT_HOST\".label" "$INVENTORY" | sed 's/^\"\(.*\)\"$/\1/')
     [[ "$HOST_IP" == "null" || -z "$HOST_IP" ]] && HOST_IP="$CURRENT_HOST"
     [[ "$LABEL" == "null" || -z "$LABEL" ]] && LABEL="$CURRENT_HOST"
 
