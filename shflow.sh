@@ -135,14 +135,14 @@ while [[ $# -gt 0 ]]; do
       exit 0 ;;
     *)
       $PROJECT_ROOT/core/utils/eg.sh "$@"
-      echo "$(render_msg "${tr[unknown_option]:-❌ Opción desconocida: {opt}}" "opt=$1")"
+      echo "$(render_msg "${tr[unknown_option]:-❌ Opción desconocida: {opt}" "opt=$1")"
       exit 1 ;;
   esac
 done
 
 # 📋 Validación de playbook
 [ -z "$PLAYBOOK" ] && echo "${tr[no_playbook]:-❌ Playbook no especificado. Usa -f <archivo.yaml>}" && exit 1
-[ ! -f "$PLAYBOOK" ] && echo "$(render_msg "${tr[playbook_not_found]:-❌ Playbook no encontrado: {file}}" "file=$PLAYBOOK")" && exit 1
+[ ! -f "$PLAYBOOK" ] && echo "$(render_msg "${tr[playbook_not_found]:-❌ Playbook no encontrado: {file}" "file=$PLAYBOOK")" && exit 1
 
 TASKS_JSON=$($YQ_BIN eval -o=json '.tasks' "$PLAYBOOK")
 
